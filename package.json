@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npm run demo:basic",
     "demo:basic": "tsx src/basic/run.ts",
-    "demo:math": "tsx src/extensions/run.ts",
+    "demo:math": "tsx src/extensions/math/run.ts",
     "test": "vitest run --coverage"
   },
   "dependencies": {

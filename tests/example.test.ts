@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import { parseMarkdown, parseMarkdownFile } from '../src/basic/index.js'
-import { parseMarkdownWithMath } from '../src/extensions/math.js'
+import { parseMarkdownWithMath } from '../src/extensions/math/math.js'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
