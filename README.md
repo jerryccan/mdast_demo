@@ -52,6 +52,21 @@ npm run demo:math
 npm test
 ```
 
+### 4. 断点调试 (Debugging)
+
+#### 方式 A: VS Code (推荐)
+1. 安装 **Vitest** 官方扩展。
+2. 在测试文件（如 `tests/math-options.test.ts`）中点击行号左侧设置断点。
+3. 点击测试函数旁边的调试图标，选择 **Debug Test**。
+
+#### 方式 B: 命令行 + 浏览器
+1. 在代码中插入 `debugger;` 语句。
+2. 运行调试脚本：
+   ```bash
+   npm run test:debug <测试文件路径>
+   ```
+3. 打开 Chrome 访问 `chrome://inspect`，点击 "Open dedicated DevTools for Node" 进行调试。
+
 ## 技术栈
 
 - [mdast-util-from-markdown](https://github.com/syntax-tree/mdast-util-from-markdown) - 核心解析引擎

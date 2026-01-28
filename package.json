@@ -7,7 +7,8 @@
     "start": "npm run demo:basic",
     "demo:basic": "tsx src/basic/run.ts",
     "demo:math": "tsx src/extensions/math/run.ts",
-    "test": "vitest run --coverage"
+    "test": "vitest run --coverage",
+    "test:debug": "vitest --inspect-brk --no-file-parallelism run"
   },
   "dependencies": {
     "mdast-util-from-markdown": "^2.0.2",
