@@ -10,16 +10,15 @@
 
 ```text
 .
-├── examples/               # 示例 Markdown 文件
-│   ├── example.md          # 基础示例
-│   └── example-math.md     # 数学公式示例
 ├── src/
+│   ├── examples/           # 示例 Markdown 文件
 │   ├── basic/              # 基础用法实现
 │   │   ├── index.ts        # 基础解析函数
 │   │   └── run.ts          # 基础用法演示入口
 │   └── extensions/         # 扩展用法实现
-│       ├── math.ts         # 数学公式解析配置
-│       └── run.ts          # 扩展用法演示入口
+│       ├── math/           # 数学公式解析
+│       │   ├── math.ts     # 解析配置
+│       │   └── run.ts      # 演示入口
 ├── tests/                  # 单元测试
 └── package.json            # 项目配置与依赖
 ```

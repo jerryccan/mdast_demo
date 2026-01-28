@@ -5,7 +5,7 @@ import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
-const examplesDir = path.join(__dirname, '../examples')
+const examplesDir = path.join(__dirname, '../src/examples')
 
 describe('基础用法 (Basic Usage)', () => {
   it('解析 example.md 并包含标题与列表', async () => {
