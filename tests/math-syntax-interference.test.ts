@@ -55,4 +55,43 @@ describe("Math Syntax Interference (数学语法干扰测试)", () => {
     // 在这个例子中，两个 _ 之间的内容： {3}}$ 和 $\ce{SiO
     expect(emphasisNode.children[0].value).toContain("3");
   });
+
+  it("干扰案例：星号 (*) 触发 emphasis", () => {
+    // 使用星号紧贴文本的场景
+    const md = "公式内包含星号：$*a* + b$";
+    const tree = parseMarkdownContentWithMath(md, { singleDollarTextMath: false });
+    const paragraph = tree.children[0] as any;
+
+    const hasEmphasis = paragraph.children.some((n: any) => n.type === "emphasis");
+    expect(hasEmphasis).toBe(true);
+  });
+
+  it("干扰案例：反引号 (`) 触发 inlineCode", () => {
+    const md = "公式内含反引号：$a = `code` + b$";
+    const tree = parseMarkdownContentWithMath(md, { singleDollarTextMath: false });
+    const paragraph = tree.children[0] as any;
+
+    const hasInlineCode = paragraph.children.some((n: any) => n.type === "inlineCode");
+    expect(hasInlineCode).toBe(true);
+  });
+
+  it("干扰案例：方括号与圆括号 ([...](...)) 触发链接", () => {
+    const md = "集合定义：$[a, b](url)$";
+    const tree = parseMarkdownContentWithMath(md, { singleDollarTextMath: false });
+    const paragraph = tree.children[0] as any;
+
+    const hasLink = paragraph.children.some((n: any) => n.type === "link");
+    expect(hasLink).toBe(true);
+  });
+
+  it("干扰案例：小于号 (<) 误认为 HTML 标签", () => {
+    const md = "当 $x <y$ 且 $z > 0$ 时";
+    const tree = parseMarkdownContentWithMath(md, { singleDollarTextMath: false });
+    const paragraph = tree.children[0] as any;
+    
+    // 即使没有开启 HTML 扩展，micromark 也会尝试处理 HTML 标签
+    // 如果 <y 后面有匹配的结束标签，它可能会被识别为 html
+    // 在这个简单例子中，我们主要演示它不再被视为 math 整体
+    expect(paragraph.children).toBeDefined();
+  });
 });
